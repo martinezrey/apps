@@ -1,2 +1,0 @@
-﻿-new user
-    http://localhost:12859/account/register
