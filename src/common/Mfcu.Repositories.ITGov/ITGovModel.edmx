@@ -1,0 +1,2018 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ITGovModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaID" />
+          </Key>
+          <Property Name="AreaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaDescr" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="boolIsActive" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Assignment">
+          <Key>
+            <PropertyRef Name="PracticeID" />
+            <PropertyRef Name="SystemUserID" />
+          </Key>
+          <Property Name="PracticeID" Type="int" Nullable="false" />
+          <Property Name="SystemUserID" Type="int" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditLog">
+          <Key>
+            <PropertyRef Name="AuditLogID" />
+          </Key>
+          <Property Name="AuditLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SurrogateType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SurrogateID" Type="int" Nullable="false" />
+          <Property Name="AuditInfo" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="OldValue" Type="varchar" MaxLength="4000" />
+          <Property Name="NewValue" Type="varchar" MaxLength="4000" />
+          <Property Name="ChangeBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChangeDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Domain">
+          <Key>
+            <PropertyRef Name="DomainID" />
+          </Key>
+          <Property Name="DomainID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DomainDescr" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AreaID" Type="int" Nullable="false" />
+          <Property Name="boolIsActive" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Practice">
+          <Key>
+            <PropertyRef Name="PracticeID" />
+          </Key>
+          <Property Name="PracticeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PracticeCode" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PracticeName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PracticeDescr" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Certification" Type="varchar" MaxLength="2000" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="PriorityID" Type="int" />
+          <Property Name="ProcessID" Type="int" Nullable="false" />
+          <Property Name="OwnerID" Type="int" />
+          <Property Name="TargetDate" Type="date" />
+          <Property Name="CompletionDate" Type="date" />
+          <Property Name="CompletionDateTimeStamp" Type="datetime" />
+          <Property Name="boolIsActive" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Priority">
+          <Key>
+            <PropertyRef Name="PriorityID" />
+          </Key>
+          <Property Name="PriorityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PriorityDescr" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="boolIsActive" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="ProcessID" />
+          </Key>
+          <Property Name="ProcessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProcessCode" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ProcessName" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="ProcessDescr" Type="varchar" MaxLength="1000" />
+          <Property Name="ProcessPurposeStatement" Type="varchar" MaxLength="1000" />
+          <Property Name="DomainID" Type="int" Nullable="false" />
+          <Property Name="boolIsActive" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusDescr" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="boolIsActive" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Attachment">
+          <Key>
+            <PropertyRef Name="DocumentID" />
+          </Key>
+          <Property Name="DocumentID" Type="int" Nullable="false" />
+          <Property Name="IncidentTrackingID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="2500" Nullable="false" />
+          <Property Name="CobitPracticeID" Type="int" />
+          <Property Name="IncidentTrackingID" Type="int" />
+          <Property Name="boolDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentDescr" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="DepartmentCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="CostCenterNumber" Type="int" />
+          <Property Name="boolIsActive" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Link">
+          <Key>
+            <PropertyRef Name="LinkID" />
+          </Key>
+          <Property Name="LinkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LinkDescr" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LinkName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LinkPath" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CobitPracticeID" Type="int" />
+          <Property Name="boolDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="System">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SystemDescr" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VendorID" Type="int" />
+          <Property Name="boolIsActive" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="SystemUserID" />
+          </Key>
+          <Property Name="SystemUserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DomainLogin" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+          <Property Name="boolIsCobitOwner" Type="bit" Nullable="false" />
+          <Property Name="boolIsIncidentOwner" Type="bit" Nullable="false" />
+          <Property Name="boolIsActive" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorDescr" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="boolIsActive" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status1">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusDescr" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="boolIsActive" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tracking">
+          <Key>
+            <PropertyRef Name="IncidentTrackingID" />
+          </Key>
+          <Property Name="IncidentTrackingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncidentCode" Type="char" MaxLength="8" />
+          <Property Name="IncidentType" Type="varchar" MaxLength="25" />
+          <Property Name="IncidentDate" Type="date" />
+          <Property Name="DowntimeStart" Type="datetime" />
+          <Property Name="DowntimeEnd" Type="datetime" />
+          <Property Name="ResolvedDate" Type="date" />
+          <Property Name="IncidentDescr" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CauseDescr" Type="varchar" MaxLength="2500" Nullable="false" />
+          <Property Name="PreventionControlDescr" Type="varchar" MaxLength="2500" />
+          <Property Name="VendorID" Type="int" />
+          <Property Name="SystemID" Type="int" />
+          <Property Name="OwnerID" Type="int" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="ResolutionDescr" Type="varchar" MaxLength="2500" />
+          <Property Name="boolDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrackingDepartment">
+          <Key>
+            <PropertyRef Name="IncidentTrackingID" />
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="IncidentTrackingID" Type="int" Nullable="false" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ITGovernance.Cobit.vwPractice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwPractice">
+          <Key>
+            <PropertyRef Name="AreaDescr" />
+            <PropertyRef Name="DomainDescr" />
+            <PropertyRef Name="ProcessCode" />
+            <PropertyRef Name="ProcessName" />
+            <PropertyRef Name="PracticeCode" />
+            <PropertyRef Name="PracticeName" />
+            <PropertyRef Name="PracticeDescr" />
+            <PropertyRef Name="boolHasDocLink" />
+            <PropertyRef Name="boolHasComment" />
+            <PropertyRef Name="AreaID" />
+            <PropertyRef Name="DomainID" />
+            <PropertyRef Name="ProcessID" />
+            <PropertyRef Name="PracticeID" />
+          </Key>
+          <Property Name="AreaDescr" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DomainDescr" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProcessCode" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ProcessName" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="ProcessDescr" Type="varchar" MaxLength="1000" />
+          <Property Name="ProcessPurposeStatement" Type="varchar" MaxLength="1000" />
+          <Property Name="PracticeCode" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PracticeName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PracticeDescr" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Certification" Type="varchar" MaxLength="2000" />
+          <Property Name="OwnerName" Type="varchar" MaxLength="100" />
+          <Property Name="OwnerEmailAddress" Type="varchar" MaxLength="150" />
+          <Property Name="StatusDescr" Type="varchar" MaxLength="25" />
+          <Property Name="PriorityDescr" Type="varchar" MaxLength="25" />
+          <Property Name="AssignedSystemUser" Type="nvarchar(max)" />
+          <Property Name="TargetDate" Type="date" />
+          <Property Name="CompletionDate" Type="date" />
+          <Property Name="CompletionDateTimeStamp" Type="datetime" />
+          <Property Name="boolHasDocLink" Type="bit" Nullable="false" />
+          <Property Name="boolHasComment" Type="bit" Nullable="false" />
+          <Property Name="AreaID" Type="int" Nullable="false" />
+          <Property Name="DomainID" Type="int" Nullable="false" />
+          <Property Name="ProcessID" Type="int" Nullable="false" />
+          <Property Name="PracticeID" Type="int" Nullable="false" />
+          <Property Name="OwnerID" Type="int" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="PriorityID" Type="int" />
+          <Property Name="AssignedSystemUserID" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ITGovernance.Cobit.vwPracticeAssignment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwPracticeAssignment">
+          <Key>
+            <PropertyRef Name="PracticeID" />
+          </Key>
+          <Property Name="PracticeID" Type="int" Nullable="false" />
+          <Property Name="SystemUserID" Type="int" />
+          <Property Name="DomainLogin" Type="varchar" MaxLength="75" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ITGovernance.Core.vwSystemUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwSystemUser">
+          <Key>
+            <PropertyRef Name="DomainLogin" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="EmailAddress" />
+            <PropertyRef Name="DepartmentDescr" />
+            <PropertyRef Name="DepartmentCode" />
+            <PropertyRef Name="boolIsCobitOwner" />
+            <PropertyRef Name="boolIsActive" />
+            <PropertyRef Name="SystemUserID" />
+            <PropertyRef Name="DepartmentID" />
+            <PropertyRef Name="boolIsIncidentOwner" />
+          </Key>
+          <Property Name="DomainLogin" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DepartmentDescr" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="DepartmentCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="CostCenterNumber" Type="int" />
+          <Property Name="boolIsCobitOwner" Type="bit" Nullable="false" />
+          <Property Name="boolIsIncidentOwner" Type="bit" Nullable="false" />
+          <Property Name="boolIsActive" Type="bit" Nullable="false" />
+          <Property Name="SystemUserID" Type="int" Nullable="false" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ITGovernance.Incident.vwTracking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwTracking">
+          <Key>
+            <PropertyRef Name="IncidentDescr" />
+            <PropertyRef Name="CauseDescr" />
+            <PropertyRef Name="boolHasComment" />
+            <PropertyRef Name="boolHasAttachment" />
+            <PropertyRef Name="created_by" />
+            <PropertyRef Name="created_dt" />
+            <PropertyRef Name="modified_by" />
+            <PropertyRef Name="modified_dt" />
+            <PropertyRef Name="IncidentTrackingID" />
+          </Key>
+          <Property Name="IncidentCode" Type="char" MaxLength="8" />
+          <Property Name="IncidentType" Type="varchar" MaxLength="25" />
+          <Property Name="IncidentDate" Type="date" />
+          <Property Name="DowntimeStart" Type="datetime" />
+          <Property Name="DowntimeEnd" Type="datetime" />
+          <Property Name="ResolvedDate" Type="date" />
+          <Property Name="IncidentDescr" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CauseDescr" Type="varchar" MaxLength="2500" Nullable="false" />
+          <Property Name="PreventionControlDescr" Type="varchar" MaxLength="2500" />
+          <Property Name="VendorDescr" Type="varchar" MaxLength="50" />
+          <Property Name="SystemDescr" Type="varchar" MaxLength="50" />
+          <Property Name="OwnerName" Type="varchar" MaxLength="100" />
+          <Property Name="OwnerEmailAddress" Type="varchar" MaxLength="150" />
+          <Property Name="OwnerDepartmentDescr" Type="varchar" MaxLength="75" />
+          <Property Name="OwnerDepartmentCode" Type="char" MaxLength="6" />
+          <Property Name="DepartmentsImpacted" Type="nvarchar(max)" />
+          <Property Name="StatusDescr" Type="varchar" MaxLength="25" />
+          <Property Name="ResolutionDescr" Type="varchar" MaxLength="2500" />
+          <Property Name="boolHasComment" Type="bit" Nullable="false" />
+          <Property Name="boolHasAttachment" Type="bit" Nullable="false" />
+          <Property Name="Attachments" Type="nvarchar(max)" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+          <Property Name="IncidentTrackingID" Type="int" Nullable="false" />
+          <Property Name="VendorID" Type="int" />
+          <Property Name="SystemID" Type="int" />
+          <Property Name="OwnerID" Type="int" />
+          <Property Name="StatusID" Type="int" />
+        </EntityType>
+        <Association Name="fk_Assignment_PracticeID">
+          <End Role="Practice" Type="Self.Practice" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Practice">
+              <PropertyRef Name="PracticeID" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="PracticeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Assignment_SystemUserID">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="SystemUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Attachment_IncidentTrackingID">
+          <End Role="Tracking" Type="Self.Tracking" Multiplicity="1" />
+          <End Role="Attachment" Type="Self.Attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tracking">
+              <PropertyRef Name="IncidentTrackingID" />
+            </Principal>
+            <Dependent Role="Attachment">
+              <PropertyRef Name="IncidentTrackingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Comment_CobitPracticeID">
+          <End Role="Practice" Type="Self.Practice" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Practice">
+              <PropertyRef Name="PracticeID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="CobitPracticeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Comment_IncidentTrackingID">
+          <End Role="Tracking" Type="Self.Tracking" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tracking">
+              <PropertyRef Name="IncidentTrackingID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="IncidentTrackingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Domain_AreaID">
+          <End Role="Area" Type="Self.Area" Multiplicity="1" />
+          <End Role="Domain" Type="Self.Domain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="AreaID" />
+            </Principal>
+            <Dependent Role="Domain">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IncidentTracking_OwnerID">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="0..1" />
+          <End Role="Tracking" Type="Self.Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IncidentTracking_StatusID">
+          <End Role="Status1" Type="Self.Status1" Multiplicity="0..1" />
+          <End Role="Tracking" Type="Self.Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status1">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IncidentTracking_SystemID">
+          <End Role="System" Type="Self.System" Multiplicity="0..1" />
+          <End Role="Tracking" Type="Self.Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="System">
+              <PropertyRef Name="SystemID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="SystemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IncidentTracking_VendorID">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+          <End Role="Tracking" Type="Self.Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IncidentTrackingDepartment_DepartmentID">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="TrackingDepartment" Type="Self.TrackingDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="TrackingDepartment">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IncidentTrackingDepartment_IncidentTrackingID">
+          <End Role="Tracking" Type="Self.Tracking" Multiplicity="1" />
+          <End Role="TrackingDepartment" Type="Self.TrackingDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tracking">
+              <PropertyRef Name="IncidentTrackingID" />
+            </Principal>
+            <Dependent Role="TrackingDepartment">
+              <PropertyRef Name="IncidentTrackingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Link_CobitPracticeID">
+          <End Role="Practice" Type="Self.Practice" Multiplicity="0..1" />
+          <End Role="Link" Type="Self.Link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Practice">
+              <PropertyRef Name="PracticeID" />
+            </Principal>
+            <Dependent Role="Link">
+              <PropertyRef Name="CobitPracticeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Practice_OwnerID">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="0..1" />
+          <End Role="Practice" Type="Self.Practice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="Practice">
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Practice_PriorityID">
+          <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
+          <End Role="Practice" Type="Self.Practice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Priority">
+              <PropertyRef Name="PriorityID" />
+            </Principal>
+            <Dependent Role="Practice">
+              <PropertyRef Name="PriorityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Practice_ProcessID">
+          <End Role="Process" Type="Self.Process" Multiplicity="1" />
+          <End Role="Practice" Type="Self.Practice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="ProcessID" />
+            </Principal>
+            <Dependent Role="Practice">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Practice_StatusID">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Practice" Type="Self.Practice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Practice">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Process_DomainID">
+          <End Role="Domain" Type="Self.Domain" Multiplicity="1" />
+          <End Role="Process" Type="Self.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domain">
+              <PropertyRef Name="DomainID" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="DomainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_System_VendorID">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+          <End Role="System" Type="Self.System" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="System">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SystemUser_DepartmentID">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="SystemUser">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="udf_get_AttachmentDirectory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Core" ReturnType="varchar" />
+        <Function Name="udf_sel_ParseListGeneric" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Core">
+          <Parameter Name="strList" Type="varchar" Mode="In" />
+          <Parameter Name="strDelimiter" Type="char" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="ListValue" Type="varchar" MaxLength="250" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="usp_get_AttachmentFileName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Core">
+          <Parameter Name="intSurrogateID" Type="int" Mode="In" />
+          <Parameter Name="strSystemType" Type="varchar" Mode="In" />
+          <Parameter Name="strSourceFile" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ITGovModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="Cobit" store:Type="Tables" />
+          <EntitySet Name="Assignment" EntityType="Self.Assignment" Schema="Cobit" store:Type="Tables" />
+          <EntitySet Name="AuditLog" EntityType="Self.AuditLog" Schema="Cobit" store:Type="Tables" />
+          <EntitySet Name="Domain" EntityType="Self.Domain" Schema="Cobit" store:Type="Tables" />
+          <EntitySet Name="Practice" EntityType="Self.Practice" Schema="Cobit" store:Type="Tables" />
+          <EntitySet Name="Priority" EntityType="Self.Priority" Schema="Cobit" store:Type="Tables" />
+          <EntitySet Name="Process" EntityType="Self.Process" Schema="Cobit" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="Cobit" store:Type="Tables" />
+          <EntitySet Name="Attachment" EntityType="Self.Attachment" Schema="Core" store:Type="Tables" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="Core" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="Core" store:Type="Tables" />
+          <EntitySet Name="Link" EntityType="Self.Link" Schema="Core" store:Type="Tables" />
+          <EntitySet Name="System" EntityType="Self.System" Schema="Core" store:Type="Tables" />
+          <EntitySet Name="SystemUser" EntityType="Self.SystemUser" Schema="Core" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="Core" store:Type="Tables" />
+          <EntitySet Name="Status1" EntityType="Self.Status1" Schema="Incident" Table="Status" store:Type="Tables" />
+          <EntitySet Name="Tracking" EntityType="Self.Tracking" Schema="Incident" store:Type="Tables" />
+          <EntitySet Name="TrackingDepartment" EntityType="Self.TrackingDepartment" Schema="Incident" store:Type="Tables" />
+          <EntitySet Name="vwPractice" EntityType="Self.vwPractice" store:Type="Views" store:Schema="Cobit">
+            <DefiningQuery>SELECT 
+    [vwPractice].[AreaDescr] AS [AreaDescr], 
+    [vwPractice].[DomainDescr] AS [DomainDescr], 
+    [vwPractice].[ProcessCode] AS [ProcessCode], 
+    [vwPractice].[ProcessName] AS [ProcessName], 
+    [vwPractice].[ProcessDescr] AS [ProcessDescr], 
+    [vwPractice].[ProcessPurposeStatement] AS [ProcessPurposeStatement], 
+    [vwPractice].[PracticeCode] AS [PracticeCode], 
+    [vwPractice].[PracticeName] AS [PracticeName], 
+    [vwPractice].[PracticeDescr] AS [PracticeDescr], 
+    [vwPractice].[Certification] AS [Certification], 
+    [vwPractice].[OwnerName] AS [OwnerName], 
+    [vwPractice].[OwnerEmailAddress] AS [OwnerEmailAddress], 
+    [vwPractice].[StatusDescr] AS [StatusDescr], 
+    [vwPractice].[PriorityDescr] AS [PriorityDescr], 
+    [vwPractice].[AssignedSystemUser] AS [AssignedSystemUser], 
+    [vwPractice].[TargetDate] AS [TargetDate], 
+    [vwPractice].[CompletionDate] AS [CompletionDate], 
+    [vwPractice].[CompletionDateTimeStamp] AS [CompletionDateTimeStamp], 
+    [vwPractice].[boolHasDocLink] AS [boolHasDocLink], 
+    [vwPractice].[boolHasComment] AS [boolHasComment], 
+    [vwPractice].[AreaID] AS [AreaID], 
+    [vwPractice].[DomainID] AS [DomainID], 
+    [vwPractice].[ProcessID] AS [ProcessID], 
+    [vwPractice].[PracticeID] AS [PracticeID], 
+    [vwPractice].[OwnerID] AS [OwnerID], 
+    [vwPractice].[StatusID] AS [StatusID], 
+    [vwPractice].[PriorityID] AS [PriorityID], 
+    [vwPractice].[AssignedSystemUserID] AS [AssignedSystemUserID]
+    FROM [Cobit].[vwPractice] AS [vwPractice]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwPracticeAssignment" EntityType="Self.vwPracticeAssignment" store:Type="Views" store:Schema="Cobit">
+            <DefiningQuery>SELECT 
+    [vwPracticeAssignment].[PracticeID] AS [PracticeID], 
+    [vwPracticeAssignment].[SystemUserID] AS [SystemUserID], 
+    [vwPracticeAssignment].[DomainLogin] AS [DomainLogin], 
+    [vwPracticeAssignment].[UserName] AS [UserName], 
+    [vwPracticeAssignment].[EmailAddress] AS [EmailAddress]
+    FROM [Cobit].[vwPracticeAssignment] AS [vwPracticeAssignment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwSystemUser" EntityType="Self.vwSystemUser" store:Type="Views" store:Schema="Core">
+            <DefiningQuery>SELECT 
+    [vwSystemUser].[DomainLogin] AS [DomainLogin], 
+    [vwSystemUser].[UserName] AS [UserName], 
+    [vwSystemUser].[EmailAddress] AS [EmailAddress], 
+    [vwSystemUser].[DepartmentDescr] AS [DepartmentDescr], 
+    [vwSystemUser].[DepartmentCode] AS [DepartmentCode], 
+    [vwSystemUser].[CostCenterNumber] AS [CostCenterNumber], 
+    [vwSystemUser].[boolIsCobitOwner] AS [boolIsCobitOwner], 
+    [vwSystemUser].[boolIsIncidentOwner] AS [boolIsIncidentOwner], 
+    [vwSystemUser].[boolIsActive] AS [boolIsActive], 
+    [vwSystemUser].[SystemUserID] AS [SystemUserID], 
+    [vwSystemUser].[DepartmentID] AS [DepartmentID]
+    FROM [Core].[vwSystemUser] AS [vwSystemUser]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwTracking" EntityType="Self.vwTracking" store:Type="Views" store:Schema="Incident">
+            <DefiningQuery>SELECT 
+    [vwTracking].[IncidentCode] AS [IncidentCode], 
+    [vwTracking].[IncidentType] AS [IncidentType], 
+    [vwTracking].[IncidentDate] AS [IncidentDate], 
+    [vwTracking].[DowntimeStart] AS [DowntimeStart], 
+    [vwTracking].[DowntimeEnd] AS [DowntimeEnd], 
+    [vwTracking].[ResolvedDate] AS [ResolvedDate], 
+    [vwTracking].[IncidentDescr] AS [IncidentDescr], 
+    [vwTracking].[CauseDescr] AS [CauseDescr], 
+    [vwTracking].[PreventionControlDescr] AS [PreventionControlDescr], 
+    [vwTracking].[VendorDescr] AS [VendorDescr], 
+    [vwTracking].[SystemDescr] AS [SystemDescr], 
+    [vwTracking].[OwnerName] AS [OwnerName], 
+    [vwTracking].[OwnerEmailAddress] AS [OwnerEmailAddress], 
+    [vwTracking].[OwnerDepartmentDescr] AS [OwnerDepartmentDescr], 
+    [vwTracking].[OwnerDepartmentCode] AS [OwnerDepartmentCode], 
+    [vwTracking].[DepartmentsImpacted] AS [DepartmentsImpacted], 
+    [vwTracking].[StatusDescr] AS [StatusDescr], 
+    [vwTracking].[ResolutionDescr] AS [ResolutionDescr], 
+    [vwTracking].[boolHasComment] AS [boolHasComment], 
+    [vwTracking].[boolHasAttachment] AS [boolHasAttachment], 
+    [vwTracking].[Attachments] AS [Attachments], 
+    [vwTracking].[created_by] AS [created_by], 
+    [vwTracking].[created_dt] AS [created_dt], 
+    [vwTracking].[modified_by] AS [modified_by], 
+    [vwTracking].[modified_dt] AS [modified_dt], 
+    [vwTracking].[IncidentTrackingID] AS [IncidentTrackingID], 
+    [vwTracking].[VendorID] AS [VendorID], 
+    [vwTracking].[SystemID] AS [SystemID], 
+    [vwTracking].[OwnerID] AS [OwnerID], 
+    [vwTracking].[StatusID] AS [StatusID]
+    FROM [Incident].[vwTracking] AS [vwTracking]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk_Assignment_PracticeID" Association="Self.fk_Assignment_PracticeID">
+            <End Role="Practice" EntitySet="Practice" />
+            <End Role="Assignment" EntitySet="Assignment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Assignment_SystemUserID" Association="Self.fk_Assignment_SystemUserID">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="Assignment" EntitySet="Assignment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Attachment_IncidentTrackingID" Association="Self.fk_Attachment_IncidentTrackingID">
+            <End Role="Tracking" EntitySet="Tracking" />
+            <End Role="Attachment" EntitySet="Attachment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Comment_CobitPracticeID" Association="Self.fk_Comment_CobitPracticeID">
+            <End Role="Practice" EntitySet="Practice" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Comment_IncidentTrackingID" Association="Self.fk_Comment_IncidentTrackingID">
+            <End Role="Tracking" EntitySet="Tracking" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Domain_AreaID" Association="Self.fk_Domain_AreaID">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Domain" EntitySet="Domain" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IncidentTracking_OwnerID" Association="Self.fk_IncidentTracking_OwnerID">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="Tracking" EntitySet="Tracking" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IncidentTracking_StatusID" Association="Self.fk_IncidentTracking_StatusID">
+            <End Role="Status1" EntitySet="Status1" />
+            <End Role="Tracking" EntitySet="Tracking" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IncidentTracking_SystemID" Association="Self.fk_IncidentTracking_SystemID">
+            <End Role="System" EntitySet="System" />
+            <End Role="Tracking" EntitySet="Tracking" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IncidentTracking_VendorID" Association="Self.fk_IncidentTracking_VendorID">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="Tracking" EntitySet="Tracking" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IncidentTrackingDepartment_DepartmentID" Association="Self.fk_IncidentTrackingDepartment_DepartmentID">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="TrackingDepartment" EntitySet="TrackingDepartment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IncidentTrackingDepartment_IncidentTrackingID" Association="Self.fk_IncidentTrackingDepartment_IncidentTrackingID">
+            <End Role="Tracking" EntitySet="Tracking" />
+            <End Role="TrackingDepartment" EntitySet="TrackingDepartment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Link_CobitPracticeID" Association="Self.fk_Link_CobitPracticeID">
+            <End Role="Practice" EntitySet="Practice" />
+            <End Role="Link" EntitySet="Link" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Practice_OwnerID" Association="Self.fk_Practice_OwnerID">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="Practice" EntitySet="Practice" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Practice_PriorityID" Association="Self.fk_Practice_PriorityID">
+            <End Role="Priority" EntitySet="Priority" />
+            <End Role="Practice" EntitySet="Practice" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Practice_ProcessID" Association="Self.fk_Practice_ProcessID">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Practice" EntitySet="Practice" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Practice_StatusID" Association="Self.fk_Practice_StatusID">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Practice" EntitySet="Practice" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Process_DomainID" Association="Self.fk_Process_DomainID">
+            <End Role="Domain" EntitySet="Domain" />
+            <End Role="Process" EntitySet="Process" />
+          </AssociationSet>
+          <AssociationSet Name="fk_System_VendorID" Association="Self.fk_System_VendorID">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="System" EntitySet="System" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SystemUser_DepartmentID" Association="Self.fk_SystemUser_DepartmentID">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="SystemUser" EntitySet="SystemUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ITGovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="udf_sel_ParseListGeneric_Result">
+          <Property Name="ListValue" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <EntityContainer Name="ITGovEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="udf_sel_ParseListGeneric" IsComposable="true" ReturnType="Collection(ITGovModel.udf_sel_ParseListGeneric_Result)">
+            <Parameter Name="strList" Mode="In" Type="String" />
+            <Parameter Name="strDelimiter" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_get_AttachmentFileName" ReturnType="Collection(ITGovModel.usp_get_AttachmentFileName_Result)">
+            <Parameter Name="intSurrogateID" Mode="In" Type="Int32" />
+            <Parameter Name="strSystemType" Mode="In" Type="String" />
+            <Parameter Name="strSourceFile" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Areas" EntityType="ITGovModel.Area" />
+          <EntitySet Name="Assignments" EntityType="ITGovModel.Assignment" />
+          <EntitySet Name="AuditLogs" EntityType="ITGovModel.AuditLog" />
+          <EntitySet Name="Domains" EntityType="ITGovModel.Domain" />
+          <EntitySet Name="Practices" EntityType="ITGovModel.Practice" />
+          <EntitySet Name="Priorities" EntityType="ITGovModel.Priority" />
+          <EntitySet Name="Processes" EntityType="ITGovModel.Process" />
+          <EntitySet Name="Status" EntityType="ITGovModel.Status" />
+          <EntitySet Name="Attachments" EntityType="ITGovModel.Attachment" />
+          <EntitySet Name="Comments" EntityType="ITGovModel.Comment" />
+          <EntitySet Name="Departments" EntityType="ITGovModel.Department" />
+          <EntitySet Name="Links" EntityType="ITGovModel.Link" />
+          <EntitySet Name="CoreSystems" EntityType="ITGovModel.CoreSystem" />
+          <EntitySet Name="SystemUsers" EntityType="ITGovModel.SystemUser" />
+          <EntitySet Name="Vendors" EntityType="ITGovModel.Vendor" />
+          <EntitySet Name="Trackings" EntityType="ITGovModel.Tracking" />
+          <EntitySet Name="TrackingDepartments" EntityType="ITGovModel.TrackingDepartment" />
+          <EntitySet Name="vwPractices" EntityType="ITGovModel.vwPractice" />
+          <EntitySet Name="vwPracticeAssignments" EntityType="ITGovModel.vwPracticeAssignment" />
+          <EntitySet Name="vwSystemUsers" EntityType="ITGovModel.vwSystemUser" />
+          <EntitySet Name="vwTrackings" EntityType="ITGovModel.vwTracking" />
+          <AssociationSet Name="fk_Domain_AreaID" Association="ITGovModel.fk_Domain_AreaID">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="Domain" EntitySet="Domains" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Assignment_PracticeID" Association="ITGovModel.fk_Assignment_PracticeID">
+            <End Role="Practice" EntitySet="Practices" />
+            <End Role="Assignment" EntitySet="Assignments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Assignment_SystemUserID" Association="ITGovModel.fk_Assignment_SystemUserID">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="Assignment" EntitySet="Assignments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Process_DomainID" Association="ITGovModel.fk_Process_DomainID">
+            <End Role="Domain" EntitySet="Domains" />
+            <End Role="Process" EntitySet="Processes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Comment_CobitPracticeID" Association="ITGovModel.fk_Comment_CobitPracticeID">
+            <End Role="Practice" EntitySet="Practices" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Link_CobitPracticeID" Association="ITGovModel.fk_Link_CobitPracticeID">
+            <End Role="Practice" EntitySet="Practices" />
+            <End Role="Link" EntitySet="Links" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Practice_OwnerID" Association="ITGovModel.fk_Practice_OwnerID">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="Practice" EntitySet="Practices" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Practice_PriorityID" Association="ITGovModel.fk_Practice_PriorityID">
+            <End Role="Priority" EntitySet="Priorities" />
+            <End Role="Practice" EntitySet="Practices" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Practice_ProcessID" Association="ITGovModel.fk_Practice_ProcessID">
+            <End Role="Process" EntitySet="Processes" />
+            <End Role="Practice" EntitySet="Practices" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Practice_StatusID" Association="ITGovModel.fk_Practice_StatusID">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Practice" EntitySet="Practices" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Attachment_IncidentTrackingID" Association="ITGovModel.fk_Attachment_IncidentTrackingID">
+            <End Role="Tracking" EntitySet="Trackings" />
+            <End Role="Attachment" EntitySet="Attachments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Comment_IncidentTrackingID" Association="ITGovModel.fk_Comment_IncidentTrackingID">
+            <End Role="Tracking" EntitySet="Trackings" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IncidentTrackingDepartment_DepartmentID" Association="ITGovModel.fk_IncidentTrackingDepartment_DepartmentID">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="TrackingDepartment" EntitySet="TrackingDepartments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SystemUser_DepartmentID" Association="ITGovModel.fk_SystemUser_DepartmentID">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_System_VendorID" Association="ITGovModel.fk_System_VendorID">
+            <End EntitySet="Vendors" Role="Vendor" />
+            <End EntitySet="CoreSystems" Role="System" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IncidentTracking_OwnerID" Association="ITGovModel.fk_IncidentTracking_OwnerID">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="Tracking" EntitySet="Trackings" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IncidentTrackingDepartment_IncidentTrackingID" Association="ITGovModel.fk_IncidentTrackingDepartment_IncidentTrackingID">
+            <End Role="Tracking" EntitySet="Trackings" />
+            <End Role="TrackingDepartment" EntitySet="TrackingDepartments" />
+          </AssociationSet>
+          <EntitySet Name="IncidentStatus" EntityType="ITGovModel.IncidentStatus" />
+          <AssociationSet Name="fk_IncidentTracking_StatusID" Association="ITGovModel.fk_IncidentTracking_StatusID">
+            <End Role="Status1" EntitySet="IncidentStatus" />
+            <End Role="Tracking" EntitySet="Trackings" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IncidentTracking_SystemID" Association="ITGovModel.fk_IncidentTracking_SystemID">
+            <End Role="CoreSystem" EntitySet="CoreSystems" />
+            <End Role="Tracking" EntitySet="Trackings" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IncidentTracking_VendorID" Association="ITGovModel.fk_IncidentTracking_VendorID">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="Tracking" EntitySet="Trackings" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="usp_get_AttachmentFileName_Result">
+          <Property Type="String" Name="FilePath" Nullable="true" MaxLength="151" />
+          <Property Type="String" Name="FileName" Nullable="true" MaxLength="8000" />
+        </ComplexType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaID" />
+          </Key>
+          <Property Name="AreaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaDescr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="boolIsActive" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Domains" Relationship="ITGovModel.fk_Domain_AreaID" FromRole="Area" ToRole="Domain" />
+        </EntityType>
+        <EntityType Name="Assignment">
+          <Key>
+            <PropertyRef Name="PracticeID" />
+            <PropertyRef Name="SystemUserID" />
+          </Key>
+          <Property Name="PracticeID" Type="Int32" Nullable="false" />
+          <Property Name="SystemUserID" Type="Int32" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Practice" Relationship="ITGovModel.fk_Assignment_PracticeID" FromRole="Assignment" ToRole="Practice" />
+          <NavigationProperty Name="SystemUser" Relationship="ITGovModel.fk_Assignment_SystemUserID" FromRole="Assignment" ToRole="SystemUser" />
+        </EntityType>
+        <EntityType Name="AuditLog">
+          <Key>
+            <PropertyRef Name="AuditLogID" />
+          </Key>
+          <Property Name="AuditLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SurrogateType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SurrogateID" Type="Int32" Nullable="false" />
+          <Property Name="AuditInfo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OldValue" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="NewValue" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="ChangeBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChangeDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Domain">
+          <Key>
+            <PropertyRef Name="DomainID" />
+          </Key>
+          <Property Name="DomainID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DomainDescr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AreaID" Type="Int32" Nullable="false" />
+          <Property Name="boolIsActive" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Area" Relationship="ITGovModel.fk_Domain_AreaID" FromRole="Domain" ToRole="Area" />
+          <NavigationProperty Name="Processes" Relationship="ITGovModel.fk_Process_DomainID" FromRole="Domain" ToRole="Process" />
+        </EntityType>
+        <EntityType Name="Practice">
+          <Key>
+            <PropertyRef Name="PracticeID" />
+          </Key>
+          <Property Name="PracticeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PracticeCode" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PracticeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PracticeDescr" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Certification" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="StatusID" Type="Int32" />
+          <Property Name="PriorityID" Type="Int32" />
+          <Property Name="ProcessID" Type="Int32" Nullable="false" />
+          <Property Name="OwnerID" Type="Int32" />
+          <Property Name="TargetDate" Type="DateTime" Precision="0" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="0" />
+          <Property Name="CompletionDateTimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="boolIsActive" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Assignments" Relationship="ITGovModel.fk_Assignment_PracticeID" FromRole="Practice" ToRole="Assignment" />
+          <NavigationProperty Name="Comments" Relationship="ITGovModel.fk_Comment_CobitPracticeID" FromRole="Practice" ToRole="Comment" />
+          <NavigationProperty Name="Links" Relationship="ITGovModel.fk_Link_CobitPracticeID" FromRole="Practice" ToRole="Link" />
+          <NavigationProperty Name="SystemUser" Relationship="ITGovModel.fk_Practice_OwnerID" FromRole="Practice" ToRole="SystemUser" />
+          <NavigationProperty Name="Priority" Relationship="ITGovModel.fk_Practice_PriorityID" FromRole="Practice" ToRole="Priority" />
+          <NavigationProperty Name="Process" Relationship="ITGovModel.fk_Practice_ProcessID" FromRole="Practice" ToRole="Process" />
+          <NavigationProperty Name="Status" Relationship="ITGovModel.fk_Practice_StatusID" FromRole="Practice" ToRole="Status" />
+        </EntityType>
+        <EntityType Name="Priority">
+          <Key>
+            <PropertyRef Name="PriorityID" />
+          </Key>
+          <Property Name="PriorityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriorityDescr" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="boolIsActive" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Practices" Relationship="ITGovModel.fk_Practice_PriorityID" FromRole="Priority" ToRole="Practice" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="ProcessID" />
+          </Key>
+          <Property Name="ProcessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessCode" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ProcessName" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="ProcessDescr" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ProcessPurposeStatement" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="DomainID" Type="Int32" Nullable="false" />
+          <Property Name="boolIsActive" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Domain" Relationship="ITGovModel.fk_Process_DomainID" FromRole="Process" ToRole="Domain" />
+          <NavigationProperty Name="Practices" Relationship="ITGovModel.fk_Practice_ProcessID" FromRole="Process" ToRole="Practice" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusDescr" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="boolIsActive" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Practices" Relationship="ITGovModel.fk_Practice_StatusID" FromRole="Status" ToRole="Practice" />
+        </EntityType>
+        <EntityType Name="Attachment">
+          <Key>
+            <PropertyRef Name="DocumentID" />
+          </Key>
+          <Property Name="DocumentID" Type="Int32" Nullable="false" />
+          <Property Name="IncidentTrackingID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tracking" Relationship="ITGovModel.fk_Attachment_IncidentTrackingID" FromRole="Attachment" ToRole="Tracking" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comment1" Type="String" Nullable="false" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="CobitPracticeID" Type="Int32" />
+          <Property Name="IncidentTrackingID" Type="Int32" />
+          <Property Name="boolDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Practice" Relationship="ITGovModel.fk_Comment_CobitPracticeID" FromRole="Comment" ToRole="Practice" />
+          <NavigationProperty Name="Tracking" Relationship="ITGovModel.fk_Comment_IncidentTrackingID" FromRole="Comment" ToRole="Tracking" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentDescr" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="CostCenterNumber" Type="Int32" />
+          <Property Name="boolIsActive" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TrackingDepartments" Relationship="ITGovModel.fk_IncidentTrackingDepartment_DepartmentID" FromRole="Department" ToRole="TrackingDepartment" />
+          <NavigationProperty Name="SystemUsers" Relationship="ITGovModel.fk_SystemUser_DepartmentID" FromRole="Department" ToRole="SystemUser" />
+        </EntityType>
+        <EntityType Name="Link">
+          <Key>
+            <PropertyRef Name="LinkID" />
+          </Key>
+          <Property Name="LinkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LinkDescr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LinkName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LinkPath" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CobitPracticeID" Type="Int32" />
+          <Property Name="boolDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Practice" Relationship="ITGovModel.fk_Link_CobitPracticeID" FromRole="Link" ToRole="Practice" />
+        </EntityType>
+        <EntityType Name="CoreSystem">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SystemDescr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorID" Type="Int32" />
+          <Property Name="boolIsActive" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Vendor" Relationship="ITGovModel.fk_System_VendorID" FromRole="System" ToRole="Vendor" />
+          <NavigationProperty Name="Trackings" Relationship="ITGovModel.fk_IncidentTracking_SystemID" FromRole="CoreSystem" ToRole="Tracking" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="SystemUserID" />
+          </Key>
+          <Property Name="SystemUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DomainLogin" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <Property Name="boolIsCobitOwner" Type="Boolean" Nullable="false" />
+          <Property Name="boolIsIncidentOwner" Type="Boolean" Nullable="false" />
+          <Property Name="boolIsActive" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Assignments" Relationship="ITGovModel.fk_Assignment_SystemUserID" FromRole="SystemUser" ToRole="Assignment" />
+          <NavigationProperty Name="Practices" Relationship="ITGovModel.fk_Practice_OwnerID" FromRole="SystemUser" ToRole="Practice" />
+          <NavigationProperty Name="Department" Relationship="ITGovModel.fk_SystemUser_DepartmentID" FromRole="SystemUser" ToRole="Department" />
+          <NavigationProperty Name="Trackings" Relationship="ITGovModel.fk_IncidentTracking_OwnerID" FromRole="SystemUser" ToRole="Tracking" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorDescr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="boolIsActive" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Systems" Relationship="ITGovModel.fk_System_VendorID" FromRole="Vendor" ToRole="System" />
+          <NavigationProperty Name="Trackings" Relationship="ITGovModel.fk_IncidentTracking_VendorID" FromRole="Vendor" ToRole="Tracking" />
+        </EntityType>
+        <EntityType Name="Tracking">
+          <Key>
+            <PropertyRef Name="IncidentTrackingID" />
+          </Key>
+          <Property Name="IncidentTrackingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncidentCode" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="IncidentType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IncidentDate" Type="DateTime" Precision="0" />
+          <Property Name="DowntimeStart" Type="DateTime" Precision="3" />
+          <Property Name="DowntimeEnd" Type="DateTime" Precision="3" />
+          <Property Name="ResolvedDate" Type="DateTime" Precision="0" />
+          <Property Name="IncidentDescr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CauseDescr" Type="String" Nullable="false" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="PreventionControlDescr" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="VendorID" Type="Int32" />
+          <Property Name="SystemID" Type="Int32" />
+          <Property Name="OwnerID" Type="Int32" />
+          <Property Name="ResolutionDescr" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="boolDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Attachments" Relationship="ITGovModel.fk_Attachment_IncidentTrackingID" FromRole="Tracking" ToRole="Attachment" />
+          <NavigationProperty Name="Comments" Relationship="ITGovModel.fk_Comment_IncidentTrackingID" FromRole="Tracking" ToRole="Comment" />
+          <NavigationProperty Name="SystemUser" Relationship="ITGovModel.fk_IncidentTracking_OwnerID" FromRole="Tracking" ToRole="SystemUser" />
+          <NavigationProperty Name="TrackingDepartments" Relationship="ITGovModel.fk_IncidentTrackingDepartment_IncidentTrackingID" FromRole="Tracking" ToRole="TrackingDepartment" />
+          <Property Name="StatusID" Type="Int32" />
+          <NavigationProperty Name="Status1" Relationship="ITGovModel.fk_IncidentTracking_StatusID" FromRole="Tracking" ToRole="Status1" />
+          <NavigationProperty Name="System" Relationship="ITGovModel.fk_IncidentTracking_SystemID" FromRole="Tracking" ToRole="CoreSystem" />
+          <NavigationProperty Name="Vendor" Relationship="ITGovModel.fk_IncidentTracking_VendorID" FromRole="Tracking" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="TrackingDepartment">
+          <Key>
+            <PropertyRef Name="IncidentTrackingID" />
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="IncidentTrackingID" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Department" Relationship="ITGovModel.fk_IncidentTrackingDepartment_DepartmentID" FromRole="TrackingDepartment" ToRole="Department" />
+          <NavigationProperty Name="Tracking" Relationship="ITGovModel.fk_IncidentTrackingDepartment_IncidentTrackingID" FromRole="TrackingDepartment" ToRole="Tracking" />
+        </EntityType>
+        <EntityType Name="vwPractice">
+          <Key>
+            <PropertyRef Name="AreaDescr" />
+            <PropertyRef Name="DomainDescr" />
+            <PropertyRef Name="ProcessCode" />
+            <PropertyRef Name="ProcessName" />
+            <PropertyRef Name="PracticeCode" />
+            <PropertyRef Name="PracticeName" />
+            <PropertyRef Name="PracticeDescr" />
+            <PropertyRef Name="boolHasDocLink" />
+            <PropertyRef Name="boolHasComment" />
+            <PropertyRef Name="AreaID" />
+            <PropertyRef Name="DomainID" />
+            <PropertyRef Name="ProcessID" />
+            <PropertyRef Name="PracticeID" />
+          </Key>
+          <Property Name="AreaDescr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DomainDescr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProcessCode" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ProcessName" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="ProcessDescr" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ProcessPurposeStatement" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PracticeCode" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PracticeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PracticeDescr" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Certification" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerEmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="StatusDescr" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PriorityDescr" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="AssignedSystemUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TargetDate" Type="DateTime" Precision="0" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="0" />
+          <Property Name="CompletionDateTimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="boolHasDocLink" Type="Boolean" Nullable="false" />
+          <Property Name="boolHasComment" Type="Boolean" Nullable="false" />
+          <Property Name="AreaID" Type="Int32" Nullable="false" />
+          <Property Name="DomainID" Type="Int32" Nullable="false" />
+          <Property Name="ProcessID" Type="Int32" Nullable="false" />
+          <Property Name="PracticeID" Type="Int32" Nullable="false" />
+          <Property Name="OwnerID" Type="Int32" />
+          <Property Name="StatusID" Type="Int32" />
+          <Property Name="PriorityID" Type="Int32" />
+          <Property Name="AssignedSystemUserID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwPracticeAssignment">
+          <Key>
+            <PropertyRef Name="PracticeID" />
+          </Key>
+          <Property Name="PracticeID" Type="Int32" Nullable="false" />
+          <Property Name="SystemUserID" Type="Int32" />
+          <Property Name="DomainLogin" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vwSystemUser">
+          <Key>
+            <PropertyRef Name="DomainLogin" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="EmailAddress" />
+            <PropertyRef Name="DepartmentDescr" />
+            <PropertyRef Name="DepartmentCode" />
+            <PropertyRef Name="boolIsCobitOwner" />
+            <PropertyRef Name="boolIsIncidentOwner" />
+            <PropertyRef Name="boolIsActive" />
+            <PropertyRef Name="SystemUserID" />
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DomainLogin" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentDescr" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="CostCenterNumber" Type="Int32" />
+          <Property Name="boolIsCobitOwner" Type="Boolean" Nullable="false" />
+          <Property Name="boolIsIncidentOwner" Type="Boolean" Nullable="false" />
+          <Property Name="boolIsActive" Type="Boolean" Nullable="false" />
+          <Property Name="SystemUserID" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwTracking">
+          <Key>
+            <PropertyRef Name="IncidentDescr" />
+            <PropertyRef Name="CauseDescr" />
+            <PropertyRef Name="boolHasComment" />
+            <PropertyRef Name="boolHasAttachment" />
+            <PropertyRef Name="created_by" />
+            <PropertyRef Name="created_dt" />
+            <PropertyRef Name="modified_by" />
+            <PropertyRef Name="modified_dt" />
+            <PropertyRef Name="IncidentTrackingID" />
+          </Key>
+          <Property Name="IncidentCode" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="IncidentType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IncidentDate" Type="DateTime" Precision="0" />
+          <Property Name="DowntimeStart" Type="DateTime" Precision="3" />
+          <Property Name="DowntimeEnd" Type="DateTime" Precision="3" />
+          <Property Name="ResolvedDate" Type="DateTime" Precision="0" />
+          <Property Name="IncidentDescr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CauseDescr" Type="String" Nullable="false" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="PreventionControlDescr" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="VendorDescr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SystemDescr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerEmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerDepartmentDescr" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerDepartmentCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="DepartmentsImpacted" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StatusDescr" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ResolutionDescr" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="boolHasComment" Type="Boolean" Nullable="false" />
+          <Property Name="boolHasAttachment" Type="Boolean" Nullable="false" />
+          <Property Name="Attachments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IncidentTrackingID" Type="Int32" Nullable="false" />
+          <Property Name="VendorID" Type="Int32" />
+          <Property Name="SystemID" Type="Int32" />
+          <Property Name="OwnerID" Type="Int32" />
+          <Property Name="StatusID" Type="Int32" />
+        </EntityType>
+        <Association Name="fk_Domain_AreaID">
+          <End Type="ITGovModel.Area" Role="Area" Multiplicity="1" />
+          <End Type="ITGovModel.Domain" Role="Domain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="AreaID" />
+            </Principal>
+            <Dependent Role="Domain">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Assignment_PracticeID">
+          <End Type="ITGovModel.Practice" Role="Practice" Multiplicity="1" />
+          <End Type="ITGovModel.Assignment" Role="Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Practice">
+              <PropertyRef Name="PracticeID" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="PracticeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Assignment_SystemUserID">
+          <End Type="ITGovModel.SystemUser" Role="SystemUser" Multiplicity="1" />
+          <End Type="ITGovModel.Assignment" Role="Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="SystemUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Process_DomainID">
+          <End Type="ITGovModel.Domain" Role="Domain" Multiplicity="1" />
+          <End Type="ITGovModel.Process" Role="Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domain">
+              <PropertyRef Name="DomainID" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="DomainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Comment_CobitPracticeID">
+          <End Type="ITGovModel.Practice" Role="Practice" Multiplicity="0..1" />
+          <End Type="ITGovModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Practice">
+              <PropertyRef Name="PracticeID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="CobitPracticeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Link_CobitPracticeID">
+          <End Type="ITGovModel.Practice" Role="Practice" Multiplicity="0..1" />
+          <End Type="ITGovModel.Link" Role="Link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Practice">
+              <PropertyRef Name="PracticeID" />
+            </Principal>
+            <Dependent Role="Link">
+              <PropertyRef Name="CobitPracticeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Practice_OwnerID">
+          <End Type="ITGovModel.SystemUser" Role="SystemUser" Multiplicity="0..1" />
+          <End Type="ITGovModel.Practice" Role="Practice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="Practice">
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Practice_PriorityID">
+          <End Type="ITGovModel.Priority" Role="Priority" Multiplicity="0..1" />
+          <End Type="ITGovModel.Practice" Role="Practice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Priority">
+              <PropertyRef Name="PriorityID" />
+            </Principal>
+            <Dependent Role="Practice">
+              <PropertyRef Name="PriorityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Practice_ProcessID">
+          <End Type="ITGovModel.Process" Role="Process" Multiplicity="1" />
+          <End Type="ITGovModel.Practice" Role="Practice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="ProcessID" />
+            </Principal>
+            <Dependent Role="Practice">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Practice_StatusID">
+          <End Type="ITGovModel.Status" Role="Status" Multiplicity="0..1" />
+          <End Type="ITGovModel.Practice" Role="Practice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Practice">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Attachment_IncidentTrackingID">
+          <End Type="ITGovModel.Tracking" Role="Tracking" Multiplicity="1" />
+          <End Type="ITGovModel.Attachment" Role="Attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tracking">
+              <PropertyRef Name="IncidentTrackingID" />
+            </Principal>
+            <Dependent Role="Attachment">
+              <PropertyRef Name="IncidentTrackingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Comment_IncidentTrackingID">
+          <End Type="ITGovModel.Tracking" Role="Tracking" Multiplicity="0..1" />
+          <End Type="ITGovModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tracking">
+              <PropertyRef Name="IncidentTrackingID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="IncidentTrackingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IncidentTrackingDepartment_DepartmentID">
+          <End Type="ITGovModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="ITGovModel.TrackingDepartment" Role="TrackingDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="TrackingDepartment">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SystemUser_DepartmentID">
+          <End Type="ITGovModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="ITGovModel.SystemUser" Role="SystemUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="SystemUser">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_System_VendorID">
+          <End Type="ITGovModel.Vendor" Multiplicity="0..1" Role="Vendor" />
+          <End Type="ITGovModel.CoreSystem" Multiplicity="*" Role="System" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="System">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IncidentTracking_OwnerID">
+          <End Type="ITGovModel.SystemUser" Role="SystemUser" Multiplicity="0..1" />
+          <End Type="ITGovModel.Tracking" Role="Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IncidentTrackingDepartment_IncidentTrackingID">
+          <End Type="ITGovModel.Tracking" Role="Tracking" Multiplicity="1" />
+          <End Type="ITGovModel.TrackingDepartment" Role="TrackingDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tracking">
+              <PropertyRef Name="IncidentTrackingID" />
+            </Principal>
+            <Dependent Role="TrackingDepartment">
+              <PropertyRef Name="IncidentTrackingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IncidentStatus">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusDescr" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="boolIsActive" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Trackings" Relationship="ITGovModel.fk_IncidentTracking_StatusID" FromRole="Status1" ToRole="Tracking" />
+        </EntityType>
+        <Association Name="fk_IncidentTracking_StatusID">
+          <End Type="ITGovModel.IncidentStatus" Role="Status1" Multiplicity="0..1" />
+          <End Type="ITGovModel.Tracking" Role="Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status1">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IncidentTracking_SystemID">
+          <End Type="ITGovModel.CoreSystem" Role="CoreSystem" Multiplicity="0..1" />
+          <End Type="ITGovModel.Tracking" Role="Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreSystem">
+              <PropertyRef Name="SystemID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="SystemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IncidentTracking_VendorID">
+          <End Type="ITGovModel.Vendor" Role="Vendor" Multiplicity="0..1" />
+          <End Type="ITGovModel.Tracking" Role="Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ITGovModelStoreContainer" CdmEntityContainer="ITGovEntities">
+          <FunctionImportMapping FunctionName="ITGovModel.Store.udf_sel_ParseListGeneric" FunctionImportName="udf_sel_ParseListGeneric">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ITGovModel.udf_sel_ParseListGeneric_Result">
+                <ScalarProperty Name="ListValue" ColumnName="ListValue" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_get_AttachmentFileName" FunctionName="ITGovModel.Store.usp_get_AttachmentFileName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ITGovModel.usp_get_AttachmentFileName_Result">
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="ITGovModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolIsActive" ColumnName="boolIsActive" />
+                <ScalarProperty Name="AreaDescr" ColumnName="AreaDescr" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Assignments">
+            <EntityTypeMapping TypeName="ITGovModel.Assignment">
+              <MappingFragment StoreEntitySet="Assignment">
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="SystemUserID" ColumnName="SystemUserID" />
+                <ScalarProperty Name="PracticeID" ColumnName="PracticeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditLogs">
+            <EntityTypeMapping TypeName="ITGovModel.AuditLog">
+              <MappingFragment StoreEntitySet="AuditLog">
+                <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+                <ScalarProperty Name="ChangeBy" ColumnName="ChangeBy" />
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+                <ScalarProperty Name="AuditInfo" ColumnName="AuditInfo" />
+                <ScalarProperty Name="SurrogateID" ColumnName="SurrogateID" />
+                <ScalarProperty Name="SurrogateType" ColumnName="SurrogateType" />
+                <ScalarProperty Name="AuditLogID" ColumnName="AuditLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Domains">
+            <EntityTypeMapping TypeName="ITGovModel.Domain">
+              <MappingFragment StoreEntitySet="Domain">
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolIsActive" ColumnName="boolIsActive" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="DomainDescr" ColumnName="DomainDescr" />
+                <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Practices">
+            <EntityTypeMapping TypeName="ITGovModel.Practice">
+              <MappingFragment StoreEntitySet="Practice">
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolIsActive" ColumnName="boolIsActive" />
+                <ScalarProperty Name="CompletionDateTimeStamp" ColumnName="CompletionDateTimeStamp" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="TargetDate" ColumnName="TargetDate" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+                <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="Certification" ColumnName="Certification" />
+                <ScalarProperty Name="PracticeDescr" ColumnName="PracticeDescr" />
+                <ScalarProperty Name="PracticeName" ColumnName="PracticeName" />
+                <ScalarProperty Name="PracticeCode" ColumnName="PracticeCode" />
+                <ScalarProperty Name="PracticeID" ColumnName="PracticeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Priorities">
+            <EntityTypeMapping TypeName="ITGovModel.Priority">
+              <MappingFragment StoreEntitySet="Priority">
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolIsActive" ColumnName="boolIsActive" />
+                <ScalarProperty Name="PriorityDescr" ColumnName="PriorityDescr" />
+                <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Processes">
+            <EntityTypeMapping TypeName="ITGovModel.Process">
+              <MappingFragment StoreEntitySet="Process">
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolIsActive" ColumnName="boolIsActive" />
+                <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+                <ScalarProperty Name="ProcessPurposeStatement" ColumnName="ProcessPurposeStatement" />
+                <ScalarProperty Name="ProcessDescr" ColumnName="ProcessDescr" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="ProcessCode" ColumnName="ProcessCode" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="ITGovModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolIsActive" ColumnName="boolIsActive" />
+                <ScalarProperty Name="StatusDescr" ColumnName="StatusDescr" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attachments">
+            <EntityTypeMapping TypeName="ITGovModel.Attachment">
+              <MappingFragment StoreEntitySet="Attachment">
+                <ScalarProperty Name="IncidentTrackingID" ColumnName="IncidentTrackingID" />
+                <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="ITGovModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolDeleted" ColumnName="boolDeleted" />
+                <ScalarProperty Name="IncidentTrackingID" ColumnName="IncidentTrackingID" />
+                <ScalarProperty Name="CobitPracticeID" ColumnName="CobitPracticeID" />
+                <ScalarProperty Name="Comment1" ColumnName="Comment" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="ITGovModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolIsActive" ColumnName="boolIsActive" />
+                <ScalarProperty Name="CostCenterNumber" ColumnName="CostCenterNumber" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="DepartmentDescr" ColumnName="DepartmentDescr" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Links">
+            <EntityTypeMapping TypeName="ITGovModel.Link">
+              <MappingFragment StoreEntitySet="Link">
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolDeleted" ColumnName="boolDeleted" />
+                <ScalarProperty Name="CobitPracticeID" ColumnName="CobitPracticeID" />
+                <ScalarProperty Name="LinkPath" ColumnName="LinkPath" />
+                <ScalarProperty Name="LinkName" ColumnName="LinkName" />
+                <ScalarProperty Name="LinkDescr" ColumnName="LinkDescr" />
+                <ScalarProperty Name="LinkID" ColumnName="LinkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreSystems">
+            <EntityTypeMapping TypeName="ITGovModel.CoreSystem">
+              <MappingFragment StoreEntitySet="System">
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolIsActive" ColumnName="boolIsActive" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="SystemDescr" ColumnName="SystemDescr" />
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemUsers">
+            <EntityTypeMapping TypeName="ITGovModel.SystemUser">
+              <MappingFragment StoreEntitySet="SystemUser">
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolIsActive" ColumnName="boolIsActive" />
+                <ScalarProperty Name="boolIsIncidentOwner" ColumnName="boolIsIncidentOwner" />
+                <ScalarProperty Name="boolIsCobitOwner" ColumnName="boolIsCobitOwner" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DomainLogin" ColumnName="DomainLogin" />
+                <ScalarProperty Name="SystemUserID" ColumnName="SystemUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="ITGovModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolIsActive" ColumnName="boolIsActive" />
+                <ScalarProperty Name="VendorDescr" ColumnName="VendorDescr" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trackings">
+            <EntityTypeMapping TypeName="ITGovModel.Tracking">
+              <MappingFragment StoreEntitySet="Tracking">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolDeleted" ColumnName="boolDeleted" />
+                <ScalarProperty Name="ResolutionDescr" ColumnName="ResolutionDescr" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="PreventionControlDescr" ColumnName="PreventionControlDescr" />
+                <ScalarProperty Name="CauseDescr" ColumnName="CauseDescr" />
+                <ScalarProperty Name="IncidentDescr" ColumnName="IncidentDescr" />
+                <ScalarProperty Name="ResolvedDate" ColumnName="ResolvedDate" />
+                <ScalarProperty Name="DowntimeEnd" ColumnName="DowntimeEnd" />
+                <ScalarProperty Name="DowntimeStart" ColumnName="DowntimeStart" />
+                <ScalarProperty Name="IncidentDate" ColumnName="IncidentDate" />
+                <ScalarProperty Name="IncidentType" ColumnName="IncidentType" />
+                <ScalarProperty Name="IncidentCode" ColumnName="IncidentCode" />
+                <ScalarProperty Name="IncidentTrackingID" ColumnName="IncidentTrackingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackingDepartments">
+            <EntityTypeMapping TypeName="ITGovModel.TrackingDepartment">
+              <MappingFragment StoreEntitySet="TrackingDepartment">
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="IncidentTrackingID" ColumnName="IncidentTrackingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwPractices">
+            <EntityTypeMapping TypeName="ITGovModel.vwPractice">
+              <MappingFragment StoreEntitySet="vwPractice">
+                <ScalarProperty Name="AssignedSystemUserID" ColumnName="AssignedSystemUserID" />
+                <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="PracticeID" ColumnName="PracticeID" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+                <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="boolHasComment" ColumnName="boolHasComment" />
+                <ScalarProperty Name="boolHasDocLink" ColumnName="boolHasDocLink" />
+                <ScalarProperty Name="CompletionDateTimeStamp" ColumnName="CompletionDateTimeStamp" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="TargetDate" ColumnName="TargetDate" />
+                <ScalarProperty Name="AssignedSystemUser" ColumnName="AssignedSystemUser" />
+                <ScalarProperty Name="PriorityDescr" ColumnName="PriorityDescr" />
+                <ScalarProperty Name="StatusDescr" ColumnName="StatusDescr" />
+                <ScalarProperty Name="OwnerEmailAddress" ColumnName="OwnerEmailAddress" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="Certification" ColumnName="Certification" />
+                <ScalarProperty Name="PracticeDescr" ColumnName="PracticeDescr" />
+                <ScalarProperty Name="PracticeName" ColumnName="PracticeName" />
+                <ScalarProperty Name="PracticeCode" ColumnName="PracticeCode" />
+                <ScalarProperty Name="ProcessPurposeStatement" ColumnName="ProcessPurposeStatement" />
+                <ScalarProperty Name="ProcessDescr" ColumnName="ProcessDescr" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="ProcessCode" ColumnName="ProcessCode" />
+                <ScalarProperty Name="DomainDescr" ColumnName="DomainDescr" />
+                <ScalarProperty Name="AreaDescr" ColumnName="AreaDescr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwPracticeAssignments">
+            <EntityTypeMapping TypeName="ITGovModel.vwPracticeAssignment">
+              <MappingFragment StoreEntitySet="vwPracticeAssignment">
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DomainLogin" ColumnName="DomainLogin" />
+                <ScalarProperty Name="SystemUserID" ColumnName="SystemUserID" />
+                <ScalarProperty Name="PracticeID" ColumnName="PracticeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwSystemUsers">
+            <EntityTypeMapping TypeName="ITGovModel.vwSystemUser">
+              <MappingFragment StoreEntitySet="vwSystemUser">
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="SystemUserID" ColumnName="SystemUserID" />
+                <ScalarProperty Name="boolIsActive" ColumnName="boolIsActive" />
+                <ScalarProperty Name="boolIsIncidentOwner" ColumnName="boolIsIncidentOwner" />
+                <ScalarProperty Name="boolIsCobitOwner" ColumnName="boolIsCobitOwner" />
+                <ScalarProperty Name="CostCenterNumber" ColumnName="CostCenterNumber" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="DepartmentDescr" ColumnName="DepartmentDescr" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DomainLogin" ColumnName="DomainLogin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwTrackings">
+            <EntityTypeMapping TypeName="ITGovModel.vwTracking">
+              <MappingFragment StoreEntitySet="vwTracking">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="IncidentTrackingID" ColumnName="IncidentTrackingID" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+                <ScalarProperty Name="boolHasAttachment" ColumnName="boolHasAttachment" />
+                <ScalarProperty Name="boolHasComment" ColumnName="boolHasComment" />
+                <ScalarProperty Name="ResolutionDescr" ColumnName="ResolutionDescr" />
+                <ScalarProperty Name="StatusDescr" ColumnName="StatusDescr" />
+                <ScalarProperty Name="DepartmentsImpacted" ColumnName="DepartmentsImpacted" />
+                <ScalarProperty Name="OwnerDepartmentCode" ColumnName="OwnerDepartmentCode" />
+                <ScalarProperty Name="OwnerDepartmentDescr" ColumnName="OwnerDepartmentDescr" />
+                <ScalarProperty Name="OwnerEmailAddress" ColumnName="OwnerEmailAddress" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="SystemDescr" ColumnName="SystemDescr" />
+                <ScalarProperty Name="VendorDescr" ColumnName="VendorDescr" />
+                <ScalarProperty Name="PreventionControlDescr" ColumnName="PreventionControlDescr" />
+                <ScalarProperty Name="CauseDescr" ColumnName="CauseDescr" />
+                <ScalarProperty Name="IncidentDescr" ColumnName="IncidentDescr" />
+                <ScalarProperty Name="ResolvedDate" ColumnName="ResolvedDate" />
+                <ScalarProperty Name="DowntimeEnd" ColumnName="DowntimeEnd" />
+                <ScalarProperty Name="DowntimeStart" ColumnName="DowntimeStart" />
+                <ScalarProperty Name="IncidentDate" ColumnName="IncidentDate" />
+                <ScalarProperty Name="IncidentType" ColumnName="IncidentType" />
+                <ScalarProperty Name="IncidentCode" ColumnName="IncidentCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IncidentStatus">
+            <EntityTypeMapping TypeName="ITGovModel.IncidentStatus">
+              <MappingFragment StoreEntitySet="Status1">
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="boolIsActive" ColumnName="boolIsActive" />
+                <ScalarProperty Name="StatusDescr" ColumnName="StatusDescr" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

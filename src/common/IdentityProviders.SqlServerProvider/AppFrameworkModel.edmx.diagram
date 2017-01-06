@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bbcbb31b03ae40f28844f97d52543150" Name="Diagram1">
+        <EntityTypeShape EntityType="AppFrameworkModel.Org" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppFrameworkModel.OrgApp" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppFrameworkModel.OrgAppRole" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppFrameworkModel.OrgAppUser" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppFrameworkModel.OrgAppUserAuthIp" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppFrameworkModel.OrgAppUserMetadata" Width="1.5" PointX="7.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppFrameworkModel.OrgAppUserRole" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppFrameworkModel.OrgGlobalRole" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppFrameworkModel.OrgGlobalUserRole" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppFrameworkModel.OrgRole" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppFrameworkModel.OrgUser" Width="1.5" PointX="8" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppFrameworkModel.OrgUserRole" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppFrameworkModel.User" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppFrameworkModel.UserRefreshToken" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgApp_Org_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgGlobalRole_Org_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgRole_Org_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgUser_Org_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgAppRole_OrgApp_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgAppUser_OrgApp_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgAppUserRole_OrgAppRole_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgAppUser_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgAppUserAuthIp_OrgAppUser_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgAppUserMetadata_OrgAppUser_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgAppUserRole_OrgAppUser_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgGlobalUserRole_OrgGlobalRole_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgGlobalUserRole_OrgUser_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgUserRole_OrgRole_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgUser_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AppFrameworkModel.fk_OrgUserRole_OrgUser_Id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

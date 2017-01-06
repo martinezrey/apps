@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5c4055f7c1114b0680225d0c704e0be5" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="ITGovModel.Area" Width="1.5" PointX="1.5" PointY="5" />
+        <EntityTypeShape EntityType="ITGovModel.Assignment" Width="1.5" PointX="10.5" PointY="13.5" />
+        <EntityTypeShape EntityType="ITGovModel.AuditLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ITGovModel.Domain" Width="1.5" PointX="3.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ITGovModel.Practice" Width="1.5" PointX="8.25" PointY="11.75" />
+        <EntityTypeShape EntityType="ITGovModel.Priority" Width="1.5" PointX="6" PointY="21.75" />
+        <EntityTypeShape EntityType="ITGovModel.Process" Width="1.5" PointX="6" PointY="4.5" />
+        <EntityTypeShape EntityType="ITGovModel.Status" Width="1.5" PointX="6" PointY="25" />
+        <EntityTypeShape EntityType="ITGovModel.Attachment" Width="1.5" PointX="7.5" PointY="18.75" />
+        <EntityTypeShape EntityType="ITGovModel.Comment" Width="1.5" PointX="13.5" PointY="13" />
+        <EntityTypeShape EntityType="ITGovModel.Department" Width="1.5" PointX="0.75" PointY="10" />
+        <EntityTypeShape EntityType="ITGovModel.Link" Width="1.5" PointX="10.5" PointY="16.875" />
+        <EntityTypeShape EntityType="ITGovModel.CoreSystem" Width="1.5" PointX="3" PointY="18" />
+        <EntityTypeShape EntityType="ITGovModel.SystemUser" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="ITGovModel.Vendor" Width="1.5" PointX="0.75" PointY="18.125" />
+        <EntityTypeShape EntityType="ITGovModel.Tracking" Width="1.5" PointX="5.25" PointY="11.5" />
+        <EntityTypeShape EntityType="ITGovModel.TrackingDepartment" Width="1.5" PointX="3" PointY="9.5" />
+        <EntityTypeShape EntityType="ITGovModel.vwPractice" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ITGovModel.vwPracticeAssignment" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ITGovModel.vwSystemUser" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ITGovModel.vwTracking" Width="1.5" PointX="10.75" PointY="4.75" />
+        <AssociationConnector Association="ITGovModel.fk_Domain_AreaID" />
+        <AssociationConnector Association="ITGovModel.fk_Assignment_PracticeID" />
+        <AssociationConnector Association="ITGovModel.fk_Assignment_SystemUserID" />
+        <AssociationConnector Association="ITGovModel.fk_Process_DomainID" />
+        <AssociationConnector Association="ITGovModel.fk_Comment_CobitPracticeID" />
+        <AssociationConnector Association="ITGovModel.fk_Link_CobitPracticeID" />
+        <AssociationConnector Association="ITGovModel.fk_Practice_OwnerID" />
+        <AssociationConnector Association="ITGovModel.fk_Practice_PriorityID" />
+        <AssociationConnector Association="ITGovModel.fk_Practice_ProcessID" />
+        <AssociationConnector Association="ITGovModel.fk_Practice_StatusID" />
+        <AssociationConnector Association="ITGovModel.fk_Attachment_IncidentTrackingID" />
+        <AssociationConnector Association="ITGovModel.fk_Comment_IncidentTrackingID" />
+        <AssociationConnector Association="ITGovModel.fk_IncidentTrackingDepartment_DepartmentID" />
+        <AssociationConnector Association="ITGovModel.fk_SystemUser_DepartmentID" />
+        <AssociationConnector Association="ITGovModel.fk_System_VendorID" />
+        <AssociationConnector Association="ITGovModel.fk_IncidentTracking_OwnerID" />
+        <AssociationConnector Association="ITGovModel.fk_IncidentTrackingDepartment_IncidentTrackingID" />
+        <EntityTypeShape EntityType="ITGovModel.IncidentStatus" Width="1.5" PointX="13.375" PointY="1" />
+        <AssociationConnector Association="ITGovModel.fk_IncidentTracking_StatusID" />
+        <AssociationConnector Association="ITGovModel.fk_IncidentTracking_SystemID" />
+        <AssociationConnector Association="ITGovModel.fk_IncidentTracking_VendorID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

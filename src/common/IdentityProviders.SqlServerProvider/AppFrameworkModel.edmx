@@ -1,0 +1,1247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AppFrameworkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Org">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrgApp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgId" Type="int" Nullable="false" />
+          <Property Name="AppName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrgAppRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgAppId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrgAppUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="OrgAppId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrgAppUserAuthIp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgAppUserId" Type="int" Nullable="false" />
+          <Property Name="Ip" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrgAppUserMetadata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgAppUserId" Type="int" Nullable="false" />
+          <Property Name="Metadata" Type="xml" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrgAppUserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgAppUserId" Type="int" Nullable="false" />
+          <Property Name="OrgAppRoleId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrgGlobalRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrgGlobalUserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgUserId" Type="int" Nullable="false" />
+          <Property Name="OrgGlobalRoleId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrgRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrgUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrgUserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgUserId" Type="int" Nullable="false" />
+          <Property Name="OrgRoleId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="250" />
+          <Property Name="PasswordHash" Type="varchar(max)" Nullable="false" />
+          <Property Name="SecurityStamp" Type="varchar(max)" Nullable="false" />
+          <Property Name="IsLockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="IsTwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="Claims" Type="varchar(max)" />
+          <Property Name="Logins" Type="varchar(max)" />
+          <Property Name="FirstName" Type="varchar" MaxLength="250" />
+          <Property Name="LastName" Type="varchar" MaxLength="250" />
+          <Property Name="Suffix" Type="varchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRefreshToken">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="AccessToken" Type="varchar(max)" Nullable="false" />
+          <Property Name="ExpirationDateUtc" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="IssuedDateUtc" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_dt" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modified_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_OrgApp_Org_Id">
+          <End Role="Org" Type="Self.Org" Multiplicity="1" />
+          <End Role="OrgApp" Type="Self.OrgApp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Org">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgApp">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppRole_OrgApp_Id">
+          <End Role="OrgApp" Type="Self.OrgApp" Multiplicity="1" />
+          <End Role="OrgAppRole" Type="Self.OrgAppRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgApp">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppRole">
+              <PropertyRef Name="OrgAppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppUser_OrgApp_Id">
+          <End Role="OrgApp" Type="Self.OrgApp" Multiplicity="1" />
+          <End Role="OrgAppUser" Type="Self.OrgAppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgApp">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppUser">
+              <PropertyRef Name="OrgAppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppUser_User_Id">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="OrgAppUser" Type="Self.OrgAppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppUserAuthIp_OrgAppUser_Id">
+          <End Role="OrgAppUser" Type="Self.OrgAppUser" Multiplicity="1" />
+          <End Role="OrgAppUserAuthIp" Type="Self.OrgAppUserAuthIp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgAppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppUserAuthIp">
+              <PropertyRef Name="OrgAppUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppUserMetadata_OrgAppUser_Id">
+          <End Role="OrgAppUser" Type="Self.OrgAppUser" Multiplicity="1" />
+          <End Role="OrgAppUserMetadata" Type="Self.OrgAppUserMetadata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgAppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppUserMetadata">
+              <PropertyRef Name="OrgAppUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppUserRole_OrgAppRole_Id">
+          <End Role="OrgAppRole" Type="Self.OrgAppRole" Multiplicity="1" />
+          <End Role="OrgAppUserRole" Type="Self.OrgAppUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgAppRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppUserRole">
+              <PropertyRef Name="OrgAppRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppUserRole_OrgAppUser_Id">
+          <End Role="OrgAppUser" Type="Self.OrgAppUser" Multiplicity="1" />
+          <End Role="OrgAppUserRole" Type="Self.OrgAppUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgAppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppUserRole">
+              <PropertyRef Name="OrgAppUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgGlobalRole_Org_Id">
+          <End Role="Org" Type="Self.Org" Multiplicity="1" />
+          <End Role="OrgGlobalRole" Type="Self.OrgGlobalRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Org">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgGlobalRole">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgGlobalUserRole_OrgGlobalRole_Id">
+          <End Role="OrgGlobalRole" Type="Self.OrgGlobalRole" Multiplicity="1" />
+          <End Role="OrgGlobalUserRole" Type="Self.OrgGlobalUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgGlobalRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgGlobalUserRole">
+              <PropertyRef Name="OrgGlobalRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgGlobalUserRole_OrgUser_Id">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="OrgGlobalUserRole" Type="Self.OrgGlobalUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgGlobalUserRole">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgRole_Org_Id">
+          <End Role="Org" Type="Self.Org" Multiplicity="1" />
+          <End Role="OrgRole" Type="Self.OrgRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Org">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgRole">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgUser_Org_Id">
+          <End Role="Org" Type="Self.Org" Multiplicity="1" />
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Org">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgUser">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgUser_User_Id">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgUserRole_OrgRole_Id">
+          <End Role="OrgRole" Type="Self.OrgRole" Multiplicity="1" />
+          <End Role="OrgUserRole" Type="Self.OrgUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgUserRole">
+              <PropertyRef Name="OrgRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgUserRole_OrgUser_Id">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="OrgUserRole" Type="Self.OrgUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgUserRole">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppFrameworkModelStoreContainer">
+          <EntitySet Name="Org" EntityType="Self.Org" Schema="Auth" store:Type="Tables" />
+          <EntitySet Name="OrgApp" EntityType="Self.OrgApp" Schema="Auth" store:Type="Tables" />
+          <EntitySet Name="OrgAppRole" EntityType="Self.OrgAppRole" Schema="Auth" store:Type="Tables" />
+          <EntitySet Name="OrgAppUser" EntityType="Self.OrgAppUser" Schema="Auth" store:Type="Tables" />
+          <EntitySet Name="OrgAppUserAuthIp" EntityType="Self.OrgAppUserAuthIp" Schema="Auth" store:Type="Tables" />
+          <EntitySet Name="OrgAppUserMetadata" EntityType="Self.OrgAppUserMetadata" Schema="Auth" store:Type="Tables" />
+          <EntitySet Name="OrgAppUserRole" EntityType="Self.OrgAppUserRole" Schema="Auth" store:Type="Tables" />
+          <EntitySet Name="OrgGlobalRole" EntityType="Self.OrgGlobalRole" Schema="Auth" store:Type="Tables" />
+          <EntitySet Name="OrgGlobalUserRole" EntityType="Self.OrgGlobalUserRole" Schema="Auth" store:Type="Tables" />
+          <EntitySet Name="OrgRole" EntityType="Self.OrgRole" Schema="Auth" store:Type="Tables" />
+          <EntitySet Name="OrgUser" EntityType="Self.OrgUser" Schema="Auth" store:Type="Tables" />
+          <EntitySet Name="OrgUserRole" EntityType="Self.OrgUserRole" Schema="Auth" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="Auth" store:Type="Tables" />
+          <EntitySet Name="UserRefreshToken" EntityType="Self.UserRefreshToken" Schema="Auth" store:Type="Tables" />
+          <AssociationSet Name="fk_OrgApp_Org_Id" Association="Self.fk_OrgApp_Org_Id">
+            <End Role="Org" EntitySet="Org" />
+            <End Role="OrgApp" EntitySet="OrgApp" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppRole_OrgApp_Id" Association="Self.fk_OrgAppRole_OrgApp_Id">
+            <End Role="OrgApp" EntitySet="OrgApp" />
+            <End Role="OrgAppRole" EntitySet="OrgAppRole" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppUser_OrgApp_Id" Association="Self.fk_OrgAppUser_OrgApp_Id">
+            <End Role="OrgApp" EntitySet="OrgApp" />
+            <End Role="OrgAppUser" EntitySet="OrgAppUser" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppUser_User_Id" Association="Self.fk_OrgAppUser_User_Id">
+            <End Role="User" EntitySet="User" />
+            <End Role="OrgAppUser" EntitySet="OrgAppUser" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppUserAuthIp_OrgAppUser_Id" Association="Self.fk_OrgAppUserAuthIp_OrgAppUser_Id">
+            <End Role="OrgAppUser" EntitySet="OrgAppUser" />
+            <End Role="OrgAppUserAuthIp" EntitySet="OrgAppUserAuthIp" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppUserMetadata_OrgAppUser_Id" Association="Self.fk_OrgAppUserMetadata_OrgAppUser_Id">
+            <End Role="OrgAppUser" EntitySet="OrgAppUser" />
+            <End Role="OrgAppUserMetadata" EntitySet="OrgAppUserMetadata" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppUserRole_OrgAppRole_Id" Association="Self.fk_OrgAppUserRole_OrgAppRole_Id">
+            <End Role="OrgAppRole" EntitySet="OrgAppRole" />
+            <End Role="OrgAppUserRole" EntitySet="OrgAppUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppUserRole_OrgAppUser_Id" Association="Self.fk_OrgAppUserRole_OrgAppUser_Id">
+            <End Role="OrgAppUser" EntitySet="OrgAppUser" />
+            <End Role="OrgAppUserRole" EntitySet="OrgAppUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgGlobalRole_Org_Id" Association="Self.fk_OrgGlobalRole_Org_Id">
+            <End Role="Org" EntitySet="Org" />
+            <End Role="OrgGlobalRole" EntitySet="OrgGlobalRole" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgGlobalUserRole_OrgGlobalRole_Id" Association="Self.fk_OrgGlobalUserRole_OrgGlobalRole_Id">
+            <End Role="OrgGlobalRole" EntitySet="OrgGlobalRole" />
+            <End Role="OrgGlobalUserRole" EntitySet="OrgGlobalUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgGlobalUserRole_OrgUser_Id" Association="Self.fk_OrgGlobalUserRole_OrgUser_Id">
+            <End Role="OrgUser" EntitySet="OrgUser" />
+            <End Role="OrgGlobalUserRole" EntitySet="OrgGlobalUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgRole_Org_Id" Association="Self.fk_OrgRole_Org_Id">
+            <End Role="Org" EntitySet="Org" />
+            <End Role="OrgRole" EntitySet="OrgRole" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgUser_Org_Id" Association="Self.fk_OrgUser_Org_Id">
+            <End Role="Org" EntitySet="Org" />
+            <End Role="OrgUser" EntitySet="OrgUser" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgUser_User_Id" Association="Self.fk_OrgUser_User_Id">
+            <End Role="User" EntitySet="User" />
+            <End Role="OrgUser" EntitySet="OrgUser" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgUserRole_OrgRole_Id" Association="Self.fk_OrgUserRole_OrgRole_Id">
+            <End Role="OrgRole" EntitySet="OrgRole" />
+            <End Role="OrgUserRole" EntitySet="OrgUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgUserRole_OrgUser_Id" Association="Self.fk_OrgUserRole_OrgUser_Id">
+            <End Role="OrgUser" EntitySet="OrgUser" />
+            <End Role="OrgUserRole" EntitySet="OrgUserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AppFrameworkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Org">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OrgApps" Relationship="Self.fk_OrgApp_Org_Id" FromRole="Org" ToRole="OrgApp" />
+          <NavigationProperty Name="OrgGlobalRoles" Relationship="Self.fk_OrgGlobalRole_Org_Id" FromRole="Org" ToRole="OrgGlobalRole" />
+          <NavigationProperty Name="OrgRoles" Relationship="Self.fk_OrgRole_Org_Id" FromRole="Org" ToRole="OrgRole" />
+          <NavigationProperty Name="OrgUsers" Relationship="Self.fk_OrgUser_Org_Id" FromRole="Org" ToRole="OrgUser" />
+        </EntityType>
+        <EntityType Name="OrgApp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgId" Type="Int32" Nullable="false" />
+          <Property Name="AppName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Org" Relationship="Self.fk_OrgApp_Org_Id" FromRole="OrgApp" ToRole="Org" />
+          <NavigationProperty Name="OrgAppRoles" Relationship="Self.fk_OrgAppRole_OrgApp_Id" FromRole="OrgApp" ToRole="OrgAppRole" />
+          <NavigationProperty Name="OrgAppUsers" Relationship="Self.fk_OrgAppUser_OrgApp_Id" FromRole="OrgApp" ToRole="OrgAppUser" />
+        </EntityType>
+        <EntityType Name="OrgAppRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgAppId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OrgApp" Relationship="Self.fk_OrgAppRole_OrgApp_Id" FromRole="OrgAppRole" ToRole="OrgApp" />
+          <NavigationProperty Name="OrgAppUserRoles" Relationship="Self.fk_OrgAppUserRole_OrgAppRole_Id" FromRole="OrgAppRole" ToRole="OrgAppUserRole" />
+        </EntityType>
+        <EntityType Name="OrgAppUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="OrgAppId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OrgApp" Relationship="Self.fk_OrgAppUser_OrgApp_Id" FromRole="OrgAppUser" ToRole="OrgApp" />
+          <NavigationProperty Name="User" Relationship="Self.fk_OrgAppUser_User_Id" FromRole="OrgAppUser" ToRole="User" />
+          <NavigationProperty Name="OrgAppUserAuthIps" Relationship="Self.fk_OrgAppUserAuthIp_OrgAppUser_Id" FromRole="OrgAppUser" ToRole="OrgAppUserAuthIp" />
+          <NavigationProperty Name="OrgAppUserMetadatas" Relationship="Self.fk_OrgAppUserMetadata_OrgAppUser_Id" FromRole="OrgAppUser" ToRole="OrgAppUserMetadata" />
+          <NavigationProperty Name="OrgAppUserRoles" Relationship="Self.fk_OrgAppUserRole_OrgAppUser_Id" FromRole="OrgAppUser" ToRole="OrgAppUserRole" />
+        </EntityType>
+        <EntityType Name="OrgAppUserAuthIp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgAppUserId" Type="Int32" Nullable="false" />
+          <Property Name="Ip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OrgAppUser" Relationship="Self.fk_OrgAppUserAuthIp_OrgAppUser_Id" FromRole="OrgAppUserAuthIp" ToRole="OrgAppUser" />
+        </EntityType>
+        <EntityType Name="OrgAppUserMetadata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgAppUserId" Type="Int32" Nullable="false" />
+          <Property Name="Metadata" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OrgAppUser" Relationship="Self.fk_OrgAppUserMetadata_OrgAppUser_Id" FromRole="OrgAppUserMetadata" ToRole="OrgAppUser" />
+        </EntityType>
+        <EntityType Name="OrgAppUserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgAppUserId" Type="Int32" Nullable="false" />
+          <Property Name="OrgAppRoleId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OrgAppRole" Relationship="Self.fk_OrgAppUserRole_OrgAppRole_Id" FromRole="OrgAppUserRole" ToRole="OrgAppRole" />
+          <NavigationProperty Name="OrgAppUser" Relationship="Self.fk_OrgAppUserRole_OrgAppUser_Id" FromRole="OrgAppUserRole" ToRole="OrgAppUser" />
+        </EntityType>
+        <EntityType Name="OrgGlobalRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Org" Relationship="Self.fk_OrgGlobalRole_Org_Id" FromRole="OrgGlobalRole" ToRole="Org" />
+          <NavigationProperty Name="OrgGlobalUserRoles" Relationship="Self.fk_OrgGlobalUserRole_OrgGlobalRole_Id" FromRole="OrgGlobalRole" ToRole="OrgGlobalUserRole" />
+        </EntityType>
+        <EntityType Name="OrgGlobalUserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgUserId" Type="Int32" Nullable="false" />
+          <Property Name="OrgGlobalRoleId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OrgGlobalRole" Relationship="Self.fk_OrgGlobalUserRole_OrgGlobalRole_Id" FromRole="OrgGlobalUserRole" ToRole="OrgGlobalRole" />
+          <NavigationProperty Name="OrgUser" Relationship="Self.fk_OrgGlobalUserRole_OrgUser_Id" FromRole="OrgGlobalUserRole" ToRole="OrgUser" />
+        </EntityType>
+        <EntityType Name="OrgRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Org" Relationship="Self.fk_OrgRole_Org_Id" FromRole="OrgRole" ToRole="Org" />
+          <NavigationProperty Name="OrgUserRoles" Relationship="Self.fk_OrgUserRole_OrgRole_Id" FromRole="OrgRole" ToRole="OrgUserRole" />
+        </EntityType>
+        <EntityType Name="OrgUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Org" Relationship="Self.fk_OrgUser_Org_Id" FromRole="OrgUser" ToRole="Org" />
+          <NavigationProperty Name="OrgGlobalUserRoles" Relationship="Self.fk_OrgGlobalUserRole_OrgUser_Id" FromRole="OrgUser" ToRole="OrgGlobalUserRole" />
+          <NavigationProperty Name="User" Relationship="Self.fk_OrgUser_User_Id" FromRole="OrgUser" ToRole="User" />
+          <NavigationProperty Name="OrgUserRoles" Relationship="Self.fk_OrgUserRole_OrgUser_Id" FromRole="OrgUser" ToRole="OrgUserRole" />
+        </EntityType>
+        <EntityType Name="OrgUserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgUserId" Type="Int32" Nullable="false" />
+          <Property Name="OrgRoleId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OrgRole" Relationship="Self.fk_OrgUserRole_OrgRole_Id" FromRole="OrgUserRole" ToRole="OrgRole" />
+          <NavigationProperty Name="OrgUser" Relationship="Self.fk_OrgUserRole_OrgUser_Id" FromRole="OrgUserRole" ToRole="OrgUser" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsLockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsTwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="Claims" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Logins" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Suffix" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OrgAppUsers" Relationship="Self.fk_OrgAppUser_User_Id" FromRole="User" ToRole="OrgAppUser" />
+          <NavigationProperty Name="OrgUsers" Relationship="Self.fk_OrgUser_User_Id" FromRole="User" ToRole="OrgUser" />
+        </EntityType>
+        <EntityType Name="UserRefreshToken">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccessToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExpirationDateUtc" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="IssuedDateUtc" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modified_dt" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="fk_OrgApp_Org_Id">
+          <End Role="Org" Type="Self.Org" Multiplicity="1" />
+          <End Role="OrgApp" Type="Self.OrgApp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Org">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgApp">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgGlobalRole_Org_Id">
+          <End Role="Org" Type="Self.Org" Multiplicity="1" />
+          <End Role="OrgGlobalRole" Type="Self.OrgGlobalRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Org">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgGlobalRole">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgRole_Org_Id">
+          <End Role="Org" Type="Self.Org" Multiplicity="1" />
+          <End Role="OrgRole" Type="Self.OrgRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Org">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgRole">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgUser_Org_Id">
+          <End Role="Org" Type="Self.Org" Multiplicity="1" />
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Org">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgUser">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppRole_OrgApp_Id">
+          <End Role="OrgApp" Type="Self.OrgApp" Multiplicity="1" />
+          <End Role="OrgAppRole" Type="Self.OrgAppRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgApp">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppRole">
+              <PropertyRef Name="OrgAppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppUser_OrgApp_Id">
+          <End Role="OrgApp" Type="Self.OrgApp" Multiplicity="1" />
+          <End Role="OrgAppUser" Type="Self.OrgAppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgApp">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppUser">
+              <PropertyRef Name="OrgAppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppUserRole_OrgAppRole_Id">
+          <End Role="OrgAppRole" Type="Self.OrgAppRole" Multiplicity="1" />
+          <End Role="OrgAppUserRole" Type="Self.OrgAppUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgAppRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppUserRole">
+              <PropertyRef Name="OrgAppRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppUser_User_Id">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="OrgAppUser" Type="Self.OrgAppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppUserAuthIp_OrgAppUser_Id">
+          <End Role="OrgAppUser" Type="Self.OrgAppUser" Multiplicity="1" />
+          <End Role="OrgAppUserAuthIp" Type="Self.OrgAppUserAuthIp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgAppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppUserAuthIp">
+              <PropertyRef Name="OrgAppUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppUserMetadata_OrgAppUser_Id">
+          <End Role="OrgAppUser" Type="Self.OrgAppUser" Multiplicity="1" />
+          <End Role="OrgAppUserMetadata" Type="Self.OrgAppUserMetadata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgAppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppUserMetadata">
+              <PropertyRef Name="OrgAppUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgAppUserRole_OrgAppUser_Id">
+          <End Role="OrgAppUser" Type="Self.OrgAppUser" Multiplicity="1" />
+          <End Role="OrgAppUserRole" Type="Self.OrgAppUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgAppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgAppUserRole">
+              <PropertyRef Name="OrgAppUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgGlobalUserRole_OrgGlobalRole_Id">
+          <End Role="OrgGlobalRole" Type="Self.OrgGlobalRole" Multiplicity="1" />
+          <End Role="OrgGlobalUserRole" Type="Self.OrgGlobalUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgGlobalRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgGlobalUserRole">
+              <PropertyRef Name="OrgGlobalRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgGlobalUserRole_OrgUser_Id">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="OrgGlobalUserRole" Type="Self.OrgGlobalUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgGlobalUserRole">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgUserRole_OrgRole_Id">
+          <End Role="OrgRole" Type="Self.OrgRole" Multiplicity="1" />
+          <End Role="OrgUserRole" Type="Self.OrgUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgUserRole">
+              <PropertyRef Name="OrgRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgUser_User_Id">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrgUserRole_OrgUser_Id">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="OrgUserRole" Type="Self.OrgUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgUserRole">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppFrameworkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Orgs" EntityType="Self.Org" />
+          <EntitySet Name="OrgApps" EntityType="Self.OrgApp" />
+          <EntitySet Name="OrgAppRoles" EntityType="Self.OrgAppRole" />
+          <EntitySet Name="OrgAppUsers" EntityType="Self.OrgAppUser" />
+          <EntitySet Name="OrgAppUserAuthIps" EntityType="Self.OrgAppUserAuthIp" />
+          <EntitySet Name="OrgAppUserMetadatas" EntityType="Self.OrgAppUserMetadata" />
+          <EntitySet Name="OrgAppUserRoles" EntityType="Self.OrgAppUserRole" />
+          <EntitySet Name="OrgGlobalRoles" EntityType="Self.OrgGlobalRole" />
+          <EntitySet Name="OrgGlobalUserRoles" EntityType="Self.OrgGlobalUserRole" />
+          <EntitySet Name="OrgRoles" EntityType="Self.OrgRole" />
+          <EntitySet Name="OrgUsers" EntityType="Self.OrgUser" />
+          <EntitySet Name="OrgUserRoles" EntityType="Self.OrgUserRole" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserRefreshTokens" EntityType="Self.UserRefreshToken" />
+          <AssociationSet Name="fk_OrgApp_Org_Id" Association="Self.fk_OrgApp_Org_Id">
+            <End Role="Org" EntitySet="Orgs" />
+            <End Role="OrgApp" EntitySet="OrgApps" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgGlobalRole_Org_Id" Association="Self.fk_OrgGlobalRole_Org_Id">
+            <End Role="Org" EntitySet="Orgs" />
+            <End Role="OrgGlobalRole" EntitySet="OrgGlobalRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgRole_Org_Id" Association="Self.fk_OrgRole_Org_Id">
+            <End Role="Org" EntitySet="Orgs" />
+            <End Role="OrgRole" EntitySet="OrgRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgUser_Org_Id" Association="Self.fk_OrgUser_Org_Id">
+            <End Role="Org" EntitySet="Orgs" />
+            <End Role="OrgUser" EntitySet="OrgUsers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppRole_OrgApp_Id" Association="Self.fk_OrgAppRole_OrgApp_Id">
+            <End Role="OrgApp" EntitySet="OrgApps" />
+            <End Role="OrgAppRole" EntitySet="OrgAppRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppUser_OrgApp_Id" Association="Self.fk_OrgAppUser_OrgApp_Id">
+            <End Role="OrgApp" EntitySet="OrgApps" />
+            <End Role="OrgAppUser" EntitySet="OrgAppUsers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppUserRole_OrgAppRole_Id" Association="Self.fk_OrgAppUserRole_OrgAppRole_Id">
+            <End Role="OrgAppRole" EntitySet="OrgAppRoles" />
+            <End Role="OrgAppUserRole" EntitySet="OrgAppUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppUser_User_Id" Association="Self.fk_OrgAppUser_User_Id">
+            <End Role="User" EntitySet="Users" />
+            <End Role="OrgAppUser" EntitySet="OrgAppUsers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppUserAuthIp_OrgAppUser_Id" Association="Self.fk_OrgAppUserAuthIp_OrgAppUser_Id">
+            <End Role="OrgAppUser" EntitySet="OrgAppUsers" />
+            <End Role="OrgAppUserAuthIp" EntitySet="OrgAppUserAuthIps" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppUserMetadata_OrgAppUser_Id" Association="Self.fk_OrgAppUserMetadata_OrgAppUser_Id">
+            <End Role="OrgAppUser" EntitySet="OrgAppUsers" />
+            <End Role="OrgAppUserMetadata" EntitySet="OrgAppUserMetadatas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgAppUserRole_OrgAppUser_Id" Association="Self.fk_OrgAppUserRole_OrgAppUser_Id">
+            <End Role="OrgAppUser" EntitySet="OrgAppUsers" />
+            <End Role="OrgAppUserRole" EntitySet="OrgAppUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgGlobalUserRole_OrgGlobalRole_Id" Association="Self.fk_OrgGlobalUserRole_OrgGlobalRole_Id">
+            <End Role="OrgGlobalRole" EntitySet="OrgGlobalRoles" />
+            <End Role="OrgGlobalUserRole" EntitySet="OrgGlobalUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgGlobalUserRole_OrgUser_Id" Association="Self.fk_OrgGlobalUserRole_OrgUser_Id">
+            <End Role="OrgUser" EntitySet="OrgUsers" />
+            <End Role="OrgGlobalUserRole" EntitySet="OrgGlobalUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgUserRole_OrgRole_Id" Association="Self.fk_OrgUserRole_OrgRole_Id">
+            <End Role="OrgRole" EntitySet="OrgRoles" />
+            <End Role="OrgUserRole" EntitySet="OrgUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgUser_User_Id" Association="Self.fk_OrgUser_User_Id">
+            <End Role="User" EntitySet="Users" />
+            <End Role="OrgUser" EntitySet="OrgUsers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrgUserRole_OrgUser_Id" Association="Self.fk_OrgUserRole_OrgUser_Id">
+            <End Role="OrgUser" EntitySet="OrgUsers" />
+            <End Role="OrgUserRole" EntitySet="OrgUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AppFrameworkModelStoreContainer" CdmEntityContainer="AppFrameworkEntities">
+          <EntitySetMapping Name="Orgs">
+            <EntityTypeMapping TypeName="AppFrameworkModel.Org">
+              <MappingFragment StoreEntitySet="Org">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrgName" ColumnName="OrgName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgApps">
+            <EntityTypeMapping TypeName="AppFrameworkModel.OrgApp">
+              <MappingFragment StoreEntitySet="OrgApp">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="AppName" ColumnName="AppName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgAppRoles">
+            <EntityTypeMapping TypeName="AppFrameworkModel.OrgAppRole">
+              <MappingFragment StoreEntitySet="OrgAppRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrgAppId" ColumnName="OrgAppId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgAppUsers">
+            <EntityTypeMapping TypeName="AppFrameworkModel.OrgAppUser">
+              <MappingFragment StoreEntitySet="OrgAppUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OrgAppId" ColumnName="OrgAppId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgAppUserAuthIps">
+            <EntityTypeMapping TypeName="AppFrameworkModel.OrgAppUserAuthIp">
+              <MappingFragment StoreEntitySet="OrgAppUserAuthIp">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrgAppUserId" ColumnName="OrgAppUserId" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgAppUserMetadatas">
+            <EntityTypeMapping TypeName="AppFrameworkModel.OrgAppUserMetadata">
+              <MappingFragment StoreEntitySet="OrgAppUserMetadata">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrgAppUserId" ColumnName="OrgAppUserId" />
+                <ScalarProperty Name="Metadata" ColumnName="Metadata" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgAppUserRoles">
+            <EntityTypeMapping TypeName="AppFrameworkModel.OrgAppUserRole">
+              <MappingFragment StoreEntitySet="OrgAppUserRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrgAppUserId" ColumnName="OrgAppUserId" />
+                <ScalarProperty Name="OrgAppRoleId" ColumnName="OrgAppRoleId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgGlobalRoles">
+            <EntityTypeMapping TypeName="AppFrameworkModel.OrgGlobalRole">
+              <MappingFragment StoreEntitySet="OrgGlobalRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgGlobalUserRoles">
+            <EntityTypeMapping TypeName="AppFrameworkModel.OrgGlobalUserRole">
+              <MappingFragment StoreEntitySet="OrgGlobalUserRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrgUserId" ColumnName="OrgUserId" />
+                <ScalarProperty Name="OrgGlobalRoleId" ColumnName="OrgGlobalRoleId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgRoles">
+            <EntityTypeMapping TypeName="AppFrameworkModel.OrgRole">
+              <MappingFragment StoreEntitySet="OrgRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgUsers">
+            <EntityTypeMapping TypeName="AppFrameworkModel.OrgUser">
+              <MappingFragment StoreEntitySet="OrgUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgUserRoles">
+            <EntityTypeMapping TypeName="AppFrameworkModel.OrgUserRole">
+              <MappingFragment StoreEntitySet="OrgUserRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrgUserId" ColumnName="OrgUserId" />
+                <ScalarProperty Name="OrgRoleId" ColumnName="OrgRoleId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AppFrameworkModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="IsLockoutEnabled" ColumnName="IsLockoutEnabled" />
+                <ScalarProperty Name="IsTwoFactorEnabled" ColumnName="IsTwoFactorEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="Claims" ColumnName="Claims" />
+                <ScalarProperty Name="Logins" ColumnName="Logins" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRefreshTokens">
+            <EntityTypeMapping TypeName="AppFrameworkModel.UserRefreshToken">
+              <MappingFragment StoreEntitySet="UserRefreshToken">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+                <ScalarProperty Name="ExpirationDateUtc" ColumnName="ExpirationDateUtc" />
+                <ScalarProperty Name="IssuedDateUtc" ColumnName="IssuedDateUtc" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_dt" ColumnName="created_dt" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="modified_dt" ColumnName="modified_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
